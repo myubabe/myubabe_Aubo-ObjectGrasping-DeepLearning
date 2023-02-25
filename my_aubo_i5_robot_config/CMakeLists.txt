@@ -68,4 +68,12 @@ link_directories(${catkin_LIBRARY_DIRS})
 
 install(TARGETS pick_place DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SH
+install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  PATTERN "setup_assistant.launch" EXCLUDE)
+install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+##add_subdirectory(/home/nicholasward2/catkin_ws/src/moveit_tutorials/doc/kinematics)
+##add_subdirectory(/home/nicholasward2/catkin_ws/src/moveit_tutorials/doc/robot_model_and_robot_state)
+##add_subdirectory(/home/nicholasward2/catkin_ws/src/moveit_tutorials/doc/planning)
+##add_subdirectory(/home/nicholasward2/catkin_ws/src/moveit_tutorials/doc/planning_scene)
+##add_subdirectory(/home/nicholasward2/catkin_ws/src/moveit
