@@ -32,4 +32,27 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   message_filters
   geometry_msgs
-  
+  message_generation
+)
+
+catkin_package(
+  LIBRARIES
+    interactivity_utils
+  INCLUDE_DIRS
+    ${THIS_PACKAGE_INCLUDE_DIRS}
+  CATKIN_DEPENDS
+    moveit_core
+    moveit_visual_tools
+    moveit_ros_planning_interface
+    interactive_markers
+  DEPENDS
+    EIGEN3
+)
+
+include_directories(${catkin_INCLUDE_DIRS})
+##catkin_package()
+find_package(Boost REQUIRED system filesystem date_time thread)
+add_executable(pick_place src/pick_place.cpp)
+target_link_libraries(pick_place ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+
+include_directories(${PCL_
