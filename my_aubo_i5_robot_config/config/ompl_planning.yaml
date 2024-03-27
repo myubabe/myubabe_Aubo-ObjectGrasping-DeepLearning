@@ -63,4 +63,8 @@ planner_configs:
   BFMT:
     type: geometric::BFMT
     num_samples: 1000  # number of states that the planner should sample. default: 1000
-    radius_multiplier: 1.0  # mu
+    radius_multiplier: 1.0  # multiplier used for the nearest neighbors search radius. default: 1.0
+    nearest_k: 1  # use the Knearest strategy. default: 1
+    balanced: 0  # exploration strategy: balanced true expands one tree every iteration. False will select the tree with lowest maximum cost to go. default: 1
+    optimality: 1  # termination strategy: optimality true finishes when the best possible path is found. Otherwise, the algorithm will finish when the first feasible path is found. default: 1
+    heuristics: 1  # activates cost to go heuris
