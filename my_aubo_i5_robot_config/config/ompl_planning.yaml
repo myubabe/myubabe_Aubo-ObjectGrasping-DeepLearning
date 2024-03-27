@@ -55,4 +55,12 @@ planner_configs:
   FMT:
     type: geometric::FMT
     num_samples: 1000  # number of states that the planner should sample. default: 1000
-    radius_multiplier: 
+    radius_multiplier: 1.1  # multiplier used for the nearest neighbors search radius. default: 1.1
+    nearest_k: 1  # use Knearest strategy. default: 1
+    cache_cc: 1  # use collision checking cache. default: 1
+    heuristics: 0  # activate cost to go heuristics. default: 0
+    extended_fmt: 1  # activate the extended FMT*: adding new samples if planner does not finish successfully. default: 1
+  BFMT:
+    type: geometric::BFMT
+    num_samples: 1000  # number of states that the planner should sample. default: 1000
+    radius_multiplier: 1.0  # mu
