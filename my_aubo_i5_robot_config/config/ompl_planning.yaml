@@ -76,4 +76,10 @@ planner_configs:
     type: geometric::STRIDE
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     goal_bias: 0.05  # When close to goal select goal, with this probability. default: 0.05
-    use_projected_distance: 0  # whether nearest neighbors are compute
+    use_projected_distance: 0  # whether nearest neighbors are computed based on distances in a projection of the state rather distances in the state space itself. default: 0
+    degree: 16  # desired degree of a node in the Geometric Near-neightbor Access Tree (GNAT). default: 16
+    max_degree: 18  # max degree of a node in the GNAT. default: 12
+    min_degree: 12  # min degree of a node in the GNAT. default: 12
+    max_pts_per_leaf: 6  # max points per leaf in the GNAT. default: 6
+    estimated_dimension: 0.0  # estimated dimension of the free space. default: 0.0
+    min_valid_path_fraction: 0.2  # Accept partia
