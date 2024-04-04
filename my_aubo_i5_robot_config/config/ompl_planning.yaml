@@ -98,4 +98,16 @@ planner_configs:
     epsilon: 0.4  # optimality approximation factor. default: 0.4
   BiEST:
     type: geometric::BiEST
-    range: 0.0  # Max motion added to tree. ==> maxDistance_ 
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+  ProjEST:
+    type: geometric::ProjEST
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability. default: 0.05
+  LazyPRM:
+    type: geometric::LazyPRM
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+  LazyPRMstar:
+    type: geometric::LazyPRMstar
+  SPARS:
+    type: geometric::SPARS
+    stretch_factor: 3.0  # roadmap s
