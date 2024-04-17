@@ -1,0 +1,6 @@
+# Simulation settings for using moveit_sim_controllers
+moveit_sim_hw_interface:
+  joint_model_group: aubo_arm
+  joint_model_group: gripper
+  joint_model_group_pose: arm_home
+# Settings for ros_control_
