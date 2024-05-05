@@ -52,4 +52,8 @@
   </include>
 
   <!-- If database loading was enabled, start mongodb as well -->
-  <include file="$(find my_aubo_i5_robot_config)/launch/default_warehouse_db.launch" if="$(arg
+  <include file="$(find my_aubo_i5_robot_config)/launch/default_warehouse_db.launch" if="$(arg db)">
+    <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
+  </include>
+
+</launch>
