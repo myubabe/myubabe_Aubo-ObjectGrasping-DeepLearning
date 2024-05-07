@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find my_aubo_i5_robot_config)/launch/planning_context.launch" />
+
+  <!-- GDB Debug Option -->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg
