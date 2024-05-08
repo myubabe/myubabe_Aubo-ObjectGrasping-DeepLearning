@@ -44,4 +44,13 @@
   </include>
 
   <!-- Trajectory Execution Functionality -->
-  <include ns="move_group" fil
+  <include ns="move_group" file="$(find my_aubo_i5_robot_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
+    <arg name="moveit_manage_controllers" value="true" />
+    <arg name="moveit_controller_manager" value="aubo_i5" unless="$(arg fake_execution)"/>
+    <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
+  </include>
+
+  <!-- Sensors Functionality -->
+  <include ns="move_group" file="$(find my_aubo_i5_robot_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
+    <arg name="moveit_sensor_manager" value="aubo_i5" />
+  </
