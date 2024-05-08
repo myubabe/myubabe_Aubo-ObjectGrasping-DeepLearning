@@ -30,3 +30,18 @@
                 " />
   -->
 
+  <!-- inhibit these default MoveGroup capabilities (space seperated) -->
+  <!--
+  <arg name="disable_capabilities" value="
+                move_group/MoveGroupKinematicsService
+                move_group/ClearOctomapService
+                " />
+  -->
+
+  <!-- Planning Functionality -->
+  <include ns="move_group" file="$(find my_aubo_i5_robot_config)/launch/planning_pipeline.launch.xml">
+    <arg name="pipeline" value="ompl" />
+  </include>
+
+  <!-- Trajectory Execution Functionality -->
+  <include ns="move_group" fil
