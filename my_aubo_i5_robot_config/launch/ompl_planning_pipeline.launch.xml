@@ -1,0 +1,6 @@
+<launch>
+
+  <!-- OMPL Plugin for MoveIt! -->
+  <arg name="planning_plugin" value="ompl_interface/OMPLPlanner" />
+
+  <!-- The reques
