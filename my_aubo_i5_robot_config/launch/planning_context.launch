@@ -12,4 +12,13 @@
   <param name="$(arg robot_description)_semantic" textfile="$(find my_aubo_i5_robot_config)/config/aubo_i5.srdf" />
 
   <!-- Load updated joint limits (override information from URDF) -->
-  <group ns="$(arg robo
+  <group ns="$(arg robot_description)_planning">
+    <rosparam command="load" file="$(find my_aubo_i5_robot_config)/config/joint_limits.yaml"/>
+  </group>
+
+  <!-- Load default settings for kinematics; these settings are overridden by settings in a node's namespace -->
+  <group ns="$(arg robot_description)_kinematics">
+    <rosparam command="load" file="$(find my_aubo_i5_robot_config)/config/kinematics.yaml"/>
+  </group>
+
+</launch>
