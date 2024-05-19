@@ -32,4 +32,31 @@
 #include <message_filters/sync_policies/exact_time.h>
 
 #include <pcl/filters/voxel_grid.h>
-//using namespace
+//using namespace message_filters;
+
+ros::Publisher pub;
+
+int minX;
+int minY;
+int maxX;
+int maxY;
+int YoloCenterPointX;
+int YoloCenterPointY;
+int endCallback2 = 0;
+int endCallback1 = 0;
+
+
+void cloud_cb_2(const darknet_ros_msgs::BoundingBoxesConstPtr& msg)
+{
+
+    if(endCallback2 == 0){
+        std::string my_choice = "";
+        std::cout << "Choose what object you want to grasp: ";
+        std::cin >> my_choice;
+        std::cout << std::endl;
+    
+
+    for(int i = 0; i < 5; i++){
+        
+            if(msg->bounding_boxes[i].Class == my_choice)
+   
