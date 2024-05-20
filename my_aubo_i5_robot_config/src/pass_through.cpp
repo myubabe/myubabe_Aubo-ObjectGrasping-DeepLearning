@@ -59,4 +59,14 @@ void cloud_cb_2(const darknet_ros_msgs::BoundingBoxesConstPtr& msg)
     for(int i = 0; i < 5; i++){
         
             if(msg->bounding_boxes[i].Class == my_choice)
-   
+            {
+                
+                minX = msg->bounding_boxes[i].xmin;
+                minY = msg->bounding_boxes[i].ymin;
+                maxX = msg->bounding_boxes[i].xmax;
+                maxY = msg->bounding_boxes[i].ymax;
+
+                std::cout << "bounding box_boxes: " << msg->bounding_boxes[i].Class << std::endl;
+                std::cout << "bounding box minX" << minX << std::endl;
+                std::cout << "bounding box minY" << minY << std::endl;
+                std::cout << "bounding box maxX" << maxX << std
