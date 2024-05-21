@@ -69,4 +69,26 @@ void cloud_cb_2(const darknet_ros_msgs::BoundingBoxesConstPtr& msg)
                 std::cout << "bounding box_boxes: " << msg->bounding_boxes[i].Class << std::endl;
                 std::cout << "bounding box minX" << minX << std::endl;
                 std::cout << "bounding box minY" << minY << std::endl;
-                std::cout << "bounding box maxX" << maxX << std
+                std::cout << "bounding box maxX" << maxX << std::endl;
+                std::cout << "bounding box maxY" << maxY << std::endl;
+
+                YoloCenterPointX = (maxX + minX)/2;
+                YoloCenterPointY = (maxY + minY)/2;
+               
+
+            }
+        
+    }
+    endCallback2 = 1;
+    }
+    
+
+}
+
+void cloud_cb (const sensor_msgs::PointCloud2ConstPtr& cloud_msg){
+if(endCallback1 == 0){
+    
+ // Container for original & filtered data
+  pcl::PCLPointCloud2* cloud = new pcl::PCLPointCloud2;
+  pcl::PCLPointCloud2ConstPtr cloudPtr(cloud);
+  pcl::PCLPointCloud2* cloud_filtered = new pcl::PCLPointCloud
