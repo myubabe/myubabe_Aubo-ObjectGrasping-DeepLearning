@@ -91,4 +91,20 @@ if(endCallback1 == 0){
  // Container for original & filtered data
   pcl::PCLPointCloud2* cloud = new pcl::PCLPointCloud2;
   pcl::PCLPointCloud2ConstPtr cloudPtr(cloud);
-  pcl::PCLPointCloud2* cloud_filtered = new pcl::PCLPointCloud
+  pcl::PCLPointCloud2* cloud_filtered = new pcl::PCLPointCloud2;
+  pcl::PCLPointCloud2Ptr cloudFilteredPtr (cloud_filtered);
+
+
+  // Convert to PCL data type
+  pcl_conversions::toPCL(*cloud_msg, *cloud);
+
+
+  // Perform voxel grid downsampling filtering
+  pcl::VoxelGrid<pcl::PCLPointCloud2> sor;
+  sor.setInputCloud (cloudPtr);
+  sor.setLeafSize (0.01f, 0.01f, 0.01f);
+  sor.filter (*cloudFilteredPtr);
+
+
+  pcl::PointCloud<pcl::PointXYZRGB> *xyz_cloud = new pcl::PointCloud<pcl::PointXYZRGB>;
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr xyzCloudPtr (xyz_cloud); // need a boost shared pointer for pcl fu
