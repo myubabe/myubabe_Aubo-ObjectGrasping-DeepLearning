@@ -107,4 +107,18 @@ if(endCallback1 == 0){
 
 
   pcl::PointCloud<pcl::PointXYZRGB> *xyz_cloud = new pcl::PointCloud<pcl::PointXYZRGB>;
-  pcl::PointCloud<pcl::PointXYZRGB>::Ptr xyzCloudPtr (xyz_cloud); // need a boost shared pointer for pcl fu
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr xyzCloudPtr (xyz_cloud); // need a boost shared pointer for pcl function inputs
+
+  // convert the pcl::PointCloud2 tpye to pcl::PointCloud<pcl::PointXYZRGB>
+  pcl::fromPCLPointCloud2(*cloudFilteredPtr, *xyzCloudPtr);
+
+
+  //perform passthrough filtering to remove table leg
+
+  // create a pcl object to hold the passthrough filtered results
+  pcl::PointCloud<pcl::PointXYZRGB> *xyz_cloud_filtered = new pcl::PointCloud<pcl::PointXYZRGB>;
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr xyzCloudPtrFiltered (xyz_cloud_filtered);
+
+  // Create the filtering object
+  pcl::PassThrough<pcl::PointXYZRGB> pass;
+  pass.setInputClo
