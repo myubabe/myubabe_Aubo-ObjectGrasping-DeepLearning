@@ -121,4 +121,18 @@ if(endCallback1 == 0){
 
   // Create the filtering object
   pcl::PassThrough<pcl::PointXYZRGB> pass;
-  pass.setInputClo
+  pass.setInputCloud (xyzCloudPtr);
+  pass.setFilterFieldName ("z");
+  pass.setFilterLimits (.78, 1.1);
+  //pass.setFilterLimitsNegative (true);
+  pass.filter (*xyzCloudPtrFiltered);
+  
+
+  // create a pcl object to hold the ransac filtered results
+  pcl::PointCloud<pcl::PointXYZRGB> *xyz_cloud_ransac_filtered = new pcl::PointCloud<pcl::PointXYZRGB>;
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr xyzCloudPtrRansacFiltered (xyz_cloud_ransac_filtered);
+
+
+  // perform ransac planar filtration to remove table top
+  pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients);
+  pcl::PointInd
