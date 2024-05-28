@@ -167,4 +167,19 @@ if(endCallback1 == 0){
   tree->setInputCloud (xyzCloudPtrRansacFiltered);
 
   // create the extraction object for the clusters
-  std::vector<pcl::PointIn
+  std::vector<pcl::PointIndices> cluster_indices;
+  pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
+  // specify euclidean cluster parameters
+  ec.setClusterTolerance (0.02); // 2cm
+  ec.setMinClusterSize (100);
+  ec.setMaxClusterSize (25000);
+  ec.setSearchMethod (tree);
+  ec.setInputCloud (xyzCloudPtrRansacFiltered);
+  // exctract the indices pertaining to each cluster and store in a vector of pcl::PointIndices
+  ec.extract (cluster_indices);
+  sensor_msgs::PointCloud2 output; 
+
+
+  pcl::PCLPointCloud2 outputPCL;
+
+  int EuclideanDistance, distance_x, dis
