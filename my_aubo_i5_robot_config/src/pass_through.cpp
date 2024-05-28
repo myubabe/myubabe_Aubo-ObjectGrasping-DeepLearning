@@ -152,4 +152,19 @@ if(endCallback1 == 0){
   // Create the filtering object
   pcl::ExtractIndices<pcl::PointXYZRGB> extract;
 
-  //extract.setInputCloud (xyzCloudPtrFilter
+  //extract.setInputCloud (xyzCloudPtrFiltered);
+  extract.setInputCloud (xyzCloudPtrFiltered);
+  extract.setIndices (inliers);
+  extract.setNegative (true);
+  extract.filter (*xyzCloudPtrRansacFiltered);
+
+
+
+  // perform euclidean cluster segmentation to seporate individual objects
+
+  // Create the KdTree object for the search method of the extraction
+  pcl::search::KdTree<pcl::PointXYZRGB>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZRGB>);
+  tree->setInputCloud (xyzCloudPtrRansacFiltered);
+
+  // create the extraction object for the clusters
+  std::vector<pcl::PointIn
