@@ -216,4 +216,17 @@ for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (
     std::cout << "controidx " << centroid2D(0) << std::endl;
     std::cout <<  "The distance in x axis: " << distance_x << std::endl;
     distance_y = abs(YoloCenterPointY - centroid2D(1));
-    std::cout <<  "The distance
+    std::cout <<  "The distance in y axis: " << distance_y << std::endl;
+    EuclideanDistance = sqrt(pow(distance_x, 2) + pow(distance_y, 2));
+    std::cout <<  "The aggregated distance: " << EuclideanDistance << std::endl;
+    
+    if(EuclideanDistance < threshold){
+        pcl::toPCLPointCloud2 (*cloud_cluster, outputPCL); 
+        pcl_conversions::fromPCL(outputPCL, output);
+        output.header.frame_id = "/camera_rgb_optical_frame";
+
+        ros::Rate loop_rate(1);
+        while(ros::ok()){
+            pub.publish(output);
+            ros::spinOnce();
+            loop_
