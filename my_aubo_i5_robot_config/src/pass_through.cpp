@@ -193,4 +193,16 @@ for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (
     Eigen::Matrix3f camera_matrix;
     camera_matrix <<  547.471175, 0.000000, 313.045026, 0.000000, 547.590335, 237.016225, 0.000000, 0.000000, 1.000000;
 
-    for (std::vector<int>::const_iterator pit = it->indic
+    for (std::vector<int>::const_iterator pit = it->indices.begin (); pit != it->indices.end (); ++pit)
+    {
+        cloud_cluster->points.push_back (xyzCloudPtrRansacFiltered->points[*pit]); 
+    }    
+    cloud_cluster->width = cloud_cluster->points.size (); 
+    cloud_cluster->height = 1; 
+    cloud_cluster->is_dense = true; 
+    //std::cout << "PointCloud representing the Cluster: " << cloud_cluster->points.size () << " data points." << std::endl; 
+    pcl::compute3DCentroid(*xyzCloudPtrRansacFiltered, *it, centroid3D);
+    
+    Eigen::Vector2i pixel_position;
+
+    pixel_position(0) = (int)(centroid3D(0)*camera_
