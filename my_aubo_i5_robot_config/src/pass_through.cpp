@@ -205,4 +205,15 @@ for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (
     
     Eigen::Vector2i pixel_position;
 
-    pixel_position(0) = (int)(centroid3D(0)*camera_
+    pixel_position(0) = (int)(centroid3D(0)*camera_matrix(0,0)/centroid3D(2) + camera_matrix(0,2));
+    pixel_position(1) = (int)(centroid3D(1)*camera_matrix(1,1)/centroid3D(2) + camera_matrix(1,2));
+    
+    centroid2D = pixel_position;
+
+
+    distance_x = abs(YoloCenterPointX - centroid2D(0));
+    std::cout << "YOlo centerx " << YoloCenterPointX << std::endl;
+    std::cout << "controidx " << centroid2D(0) << std::endl;
+    std::cout <<  "The distance in x axis: " << distance_x << std::endl;
+    distance_y = abs(YoloCenterPointY - centroid2D(1));
+    std::cout <<  "The distance
