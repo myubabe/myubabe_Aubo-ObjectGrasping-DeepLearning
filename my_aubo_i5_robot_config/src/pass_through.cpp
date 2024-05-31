@@ -182,4 +182,15 @@ if(endCallback1 == 0){
 
   pcl::PCLPointCloud2 outputPCL;
 
-  int EuclideanDistance, distance_x, dis
+  int EuclideanDistance, distance_x, distance_y;
+  int threshold = 30;
+
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_cluster (new pcl::PointCloud<pcl::PointXYZRGB>); 
+for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (); it != cluster_indices.end (); ++it) 
+{ 
+    Eigen::Vector4f centroid3D;
+    Eigen::Vector2i centroid2D;
+    Eigen::Matrix3f camera_matrix;
+    camera_matrix <<  547.471175, 0.000000, 313.045026, 0.000000, 547.590335, 237.016225, 0.000000, 0.000000, 1.000000;
+
+    for (std::vector<int>::const_iterator pit = it->indic
