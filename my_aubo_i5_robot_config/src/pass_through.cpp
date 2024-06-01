@@ -229,4 +229,32 @@ for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin (
         while(ros::ok()){
             pub.publish(output);
             ros::spinOnce();
-            loop_
+            loop_rate.sleep();
+        }
+
+    }
+    
+    //centroid2D = point3Dto_pixel(centroid3D, camera_matrix);
+
+
+}
+endCallback1++;
+
+}
+}
+
+
+
+
+int main (int argc, char** argv){
+// Initialize ROS
+ros::init (argc, argv, "my_pcl_tutorial");
+ros::NodeHandle nh;
+ros::NodeHandle m_nh;
+
+//subscribe to the pointcloud
+ros::Subscriber sub = nh.subscribe ("/camera_remote/depth_registered/points", 1, cloud_cb);
+//subscribe to the bouding boxes from darknet_ros
+ros::Subscriber object_detection = m_nh.subscribe("/darknet_ros/bounding_boxes", 1, cloud_cb_2);
+   
+p
