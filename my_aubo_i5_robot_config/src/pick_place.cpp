@@ -62,4 +62,20 @@ void pick(moveit::planning_interface::MoveGroupInterface& move_group)
   std::vector<moveit_msgs::Grasp> grasps;
   grasps.resize(1);
 
-  /
+  // Setting grasp pose
+  // ++++++++++++++++++++++
+  
+  grasps[0].grasp_pose.header.frame_id = "base_link";
+  //tf2::Quaternion orientation;
+  tf2::Quaternion orientation;
+  orientation.setRPY(1.489, -0.059, -0.637);
+  
+  grasps[0].grasp_pose.pose.orientation = tf2::toMsg(orientation);
+  grasps[0].grasp_pose.pose.position.x = -0.750;
+  grasps[0].grasp_pose.pose.position.y = 0.041;
+  grasps[0].grasp_pose.pose.position.z =  0.062;
+
+ 
+  // Setting pre-grasp approach
+  // ++++++++++++++++++++++++++
+  /* Defined with respect to frame_i
