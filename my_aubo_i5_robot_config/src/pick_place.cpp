@@ -47,4 +47,19 @@ void closedGripper(trajectory_msgs::JointTrajectory& posture)
 
   /* Set them as closed. */
   posture.points.resize(1);
-  posture.points[0].po
+  posture.points[0].positions.resize(2);
+  posture.points[0].positions[0] = 0.00;
+  posture.points[0].positions[1] = 0.00;
+  posture.points[0].time_from_start = ros::Duration(0.5);
+  // END_SUB_TUTORIAL
+}
+
+void pick(moveit::planning_interface::MoveGroupInterface& move_group)
+{
+  // BEGIN_SUB_TUTORIAL pick1
+  // Create a vector of grasps to be attempted, currently only creating single grasp.
+  // This is essentially useful when using a grasp generator to generate and test multiple grasps.
+  std::vector<moveit_msgs::Grasp> grasps;
+  grasps.resize(1);
+
+  /
