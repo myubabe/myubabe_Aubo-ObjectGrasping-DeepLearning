@@ -93,3 +93,20 @@ void pick(moveit::planning_interface::MoveGroupInterface& move_group)
   // Set support surface as table1.
   move_group.setSupportSurfaceName("table1");
   // Call pick to pick up the object using the grasps given
+  move_group.pick("object", grasps);
+  // END_SUB_TUTORIAL
+}
+
+void place(moveit::planning_interface::MoveGroupInterface& group)
+{
+  // 
+  //  - Calling place function m rrently only creating single place location.
+  std::vector<moveit_msgs::PlaceLocation> place_location;
+  place_location.resize(1);
+
+  // Setting place location pose
+  // +++++++++++++++++++++++++++
+  place_location[0].place_pose.header.frame_id = "world";
+  tf2::Quaternion orientation;
+  orientation.setRPY(0, 0, M_PI / 2);
+  place_location[0].place_pose.pose.orientation = tf2::t
