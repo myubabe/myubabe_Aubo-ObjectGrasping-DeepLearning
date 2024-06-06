@@ -147,4 +147,20 @@ void place(moveit::planning_interface::MoveGroupInterface& group)
   // END_SUB_TUTORIAL
 }
 
-void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& plannin
+void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& planning_scene_interface)
+{
+  // BEGIN_SUB_TUTORIAL table1
+  //
+  // Creating Environment
+  // ^^^^^^^^^^^^^^^^^^^^
+  // Create vector to hold 3 collision objects.
+  std::vector<moveit_msgs::CollisionObject> collision_objects;
+  collision_objects.resize(1);
+
+  // Add the first table where the cube will originally be kept.
+  collision_objects[0].id = "table1";
+  collision_objects[0].header.frame_id = "base_link";
+
+  /* Define the primitive and its dimensions. */
+  collision_objects[0].primitives.resize(1);
+  collision_objects[0].primitives[0
