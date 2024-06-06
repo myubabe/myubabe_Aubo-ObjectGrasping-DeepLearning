@@ -163,4 +163,15 @@ void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& pla
 
   /* Define the primitive and its dimensions. */
   collision_objects[0].primitives.resize(1);
-  collision_objects[0].primitives[0
+  collision_objects[0].primitives[0].type = collision_objects[0].primitives[0].BOX;
+  collision_objects[0].primitives[0].dimensions.resize(3);
+  collision_objects[0].primitives[0].dimensions[0] = 1.0;
+  collision_objects[0].primitives[0].dimensions[1] = 1.0;
+  collision_objects[0].primitives[0].dimensions[2] = 0.47;
+
+  /* Define the pose of the table. */
+  collision_objects[0].primitive_poses.resize(1);
+  collision_objects[0].primitive_poses[0].position.x = -1.0;
+  collision_objects[0].primitive_poses[0].position.y = 0.0;
+  collision_objects[0].primitive_poses[0].position.z = -0.30;
+  col
