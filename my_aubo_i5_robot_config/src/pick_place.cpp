@@ -174,4 +174,25 @@ void addCollisionObjects(moveit::planning_interface::PlanningSceneInterface& pla
   collision_objects[0].primitive_poses[0].position.x = -1.0;
   collision_objects[0].primitive_poses[0].position.y = 0.0;
   collision_objects[0].primitive_poses[0].position.z = -0.30;
-  col
+  collision_objects[0].primitive_poses[0].orientation.x = 5;
+  // END_SUB_TUTORIAL
+
+  collision_objects[0].operation = collision_objects[0].ADD;
+
+  
+
+  planning_scene_interface.applyCollisionObjects(collision_objects);
+}
+
+int main(int argc, char** argv)
+{
+  ros::init(argc, argv, "aubo_arm_pick_place");
+  ros::NodeHandle nh;
+  //ros::NodeHandle m_nh;
+
+//  ros::Subscriber sub = m_nh.subscribe("/detect_grasps/plot_grasps", 1, cloud_cb);
+  //ros::spin();
+  //ros::WallDuration(10.0).sleep();
+
+  ros::AsyncSpinner spinner(1);
+  spinner.start(
