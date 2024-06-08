@@ -195,4 +195,25 @@ int main(int argc, char** argv)
   //ros::WallDuration(10.0).sleep();
 
   ros::AsyncSpinner spinner(1);
-  spinner.start(
+  spinner.start();
+
+  ros::WallDuration(1.0).sleep();
+  moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
+  moveit::planning_interface::MoveGroupInterface group("aubo_arm");
+  group.setPlanningTime(60.0);
+
+  //addCollisionObjects(planning_scene_interface);
+
+  // Wait a bit for ROS things to initialize
+  ros::WallDuration(1.0).sleep();
+
+  pick(group);
+
+  ros::WallDuration(1.0).sleep();
+
+  //place(group);
+
+  ros::waitForShutdown();
+  return 0;
+}
+
