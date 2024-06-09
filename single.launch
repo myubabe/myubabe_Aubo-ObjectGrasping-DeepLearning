@@ -1,4 +1,13 @@
 <launch>
 
     <arg name="markerId"        default="26"/>
-    <arg name="markerSize"   
+    <arg name="markerSize"      default="0.1524"/>    <!-- in m -->
+    <arg name="eye"             default="left"/>
+    <arg name="marker_frame"    default="aruco_marker_frame"/>
+    <arg name="ref_frame"       default=""/>  <!-- leave empty and the pose will be published wrt param parent_name -->
+    <arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
+
+
+    <node pkg="aruco_ros" type="single" name="aruco_single">
+        <remap from="/camera_info" to="/camera_remote/rgb/camera_info" />
+        <remap from="
