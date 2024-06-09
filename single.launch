@@ -10,4 +10,11 @@
 
     <node pkg="aruco_ros" type="single" name="aruco_single">
         <remap from="/camera_info" to="/camera_remote/rgb/camera_info" />
-        <remap from="
+        <remap from="/image" to="/camera_remote/rgb/image_rect_color" />
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size"        value="$(arg markerSize)"/>
+        <param name="marker_id"          value="$(arg markerId)"/>
+        <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="camera_frame"       value="camera_rgb_optical_frame"/>
+        <param name="marker_frame"       value="$(arg marker_frame)" />
+        <pa
